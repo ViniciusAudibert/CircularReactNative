@@ -7,26 +7,38 @@ class HeaderHome extends Component {
             </Image>*/
     render() {
         return (
-            <View style={styles.headHome}>
+        /*    <View style={styles.headHome}>
                 <Text style={styles.titleHome}>{this.props.title}</Text>
+            </View>*/
+            <View style={styles.headHome}>
+            <Image style={styles.imgBackgroud} source={require('./../assets/images/background.png')}>
+                 <Text style={styles.titleHome}>{this.props.title}</Text>
+            </Image>
             </View>
         );
     }
 }
 
-const backgroundUrl = require('./../assets/images/background.png');
-
 const styles = StyleSheet.create({
     headHome: {
-        height: 55,
+        flex: 1,
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#166D8F'
+        backgroundColor: '#000000',
+        height: 55,
+        
     },
     titleHome: {
-        color: '#fff',
         fontSize: 25,
-        fontWeight: '900'
+        fontWeight: '900',
+        backgroundColor: 'rgba(0,0,0,0)',
+        color: 'white',
+        marginTop: -40
+    },
+    imgBackgroud:{
+        paddingTop: 60,
+        alignItems: 'center',
+        height: 55
     }
 });
 
