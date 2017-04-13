@@ -1,53 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, {Component} from 'react';
+import {AppRegistry, StyleSheet, Text, ScrollView} from 'react-native';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import HeaderHome from './src/components/header.home';
+import ClockBar from './src/components/clock.bar';
+import ClockList from './src/components/clock.list';
+import CircularCtrl from './src/controllers/circular.info.controller';
 
 export default class CircularReactNative extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clockList: {}
+    };
+  }
+
+  componentWillMount() {
+    this.setState({ clockList: CircularCtrl.getCircularInfoByHour(2,null,null)});
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <ScrollView style={styles.container}>
+        <HeaderHome title="Circular Unisinos"/>
+        <ClockBar/> 
+        { 
+          Object.keys(this.state.clockList).map( (week,index) => (<ClockList key={index} weekKey={week} weekVal={this.state.clockList[week]} />)) 
+        }
+
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    flex: 1
+  }
 });
 
 AppRegistry.registerComponent('CircularReactNative', () => CircularReactNative);
