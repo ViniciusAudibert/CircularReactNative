@@ -38,12 +38,21 @@ class ClockList extends Component {
 const styles = StyleSheet.create({
     itemRow: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        flexDirection: 'row'
     }, 
     itemHour: {
         flex: 2,
-        backgroundColor: 'blue'
+        justifyContent: 'center',
+        paddingVertical: 20,
+        textAlign: 'center',
+        paddingHorizontal: 20,
+        marginHorizontal: 5,
+        marginTop: 10,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        fontSize: 16,
+        borderColor: '#ddd',
+        backgroundColor: '#eaeaea'
     },
     calmTitle: {
         color: '#11c1f3',
