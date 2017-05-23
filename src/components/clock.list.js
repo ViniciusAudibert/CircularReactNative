@@ -56,13 +56,14 @@ const styles = StyleSheet.create({
     },
     calmTitle: {
         color: '#11c1f3',
-        paddingBottom: 20,
+        marginTop: 20,
         fontSize: 20,
         fontWeight: '900',
         textAlign: 'center'
     }, 
     itemDivider: {
-        marginHorizontal: 15
+        marginHorizontal: 15,
+                marginTop: 20,
     },
     titleDivider: {
         backgroundColor: '#f5f5f5',
