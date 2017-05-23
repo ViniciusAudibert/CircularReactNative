@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, ScrollView } from 'react-native';
+import { AppRegistry, StyleSheet, Text, ScrollView, View } from 'react-native';
 
 import HeaderHome from './components/header.home';
 import ClockBar from './components/clock.bar';
@@ -33,7 +33,7 @@ export default class App extends Component {
         {
           Object.keys(this.state.clockList).map((week, index) => (<ClockList key={index} weekKey={week} weekVal={this.state.clockList[week]} />))
         }
-
+        <View style={styles.bottomSpace}></View>
       </ScrollView>
     );
   }
@@ -42,6 +42,9 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  bottomSpace:{
+    height: 15
   }
 });
 
