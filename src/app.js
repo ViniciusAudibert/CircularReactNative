@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, ScrollView } from 'react-native';
 
 import HeaderHome from './components/header.home';
 import ClockBar from './components/clock.bar';
@@ -13,19 +13,25 @@ export default class App extends Component {
     this.state = {
       clockList: {}
     };
+
+    this.setClockList = this.setClockList.bind(this);
   }
 
   componentWillMount() {
-    this.setState({ clockList: CircularCtrl.getCircularInfoByHour(2,null,null)});
+    this.setClockList(CircularCtrl.getCircularInfoByHour(2, null, null));
+  }
+
+  setClockList(clockList) {
+      this.setState({ clockList: clockList });
   }
 
   render() {
     return (
       <ScrollView style={styles.container}>
-        <HeaderHome title="Circular Unisinos"/>
-        <ClockBar/> 
-        { 
-          Object.keys(this.state.clockList).map( (week,index) => (<ClockList key={index} weekKey={week} weekVal={this.state.clockList[week]} />)) 
+        <HeaderHome title="Circular Unisinos" />
+        <ClockBar setClockList={this.setClockList}/>
+        {
+          Object.keys(this.state.clockList).map((week, index) => (<ClockList key={index} weekKey={week} weekVal={this.state.clockList[week]} />))
         }
 
       </ScrollView>
